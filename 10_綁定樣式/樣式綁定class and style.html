@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src ="../js/vue.js"></script>
+    <title>Document</title>
+    <style>
+        .basic{
+            width:400px;
+            height:100px;
+            border:1px solid black;
+        }
+
+        .happy{
+            width:400px;
+            height:100px;
+            background-color: orange;
+            border:1px solid rgb(255, 124, 30);
+        }
+
+        .sad{
+            width:400px;
+            height:100px;
+            background-color: rgb(0, 119, 255);
+            border:1px solid rgb(145, 145, 145);
+        }
+
+        .normal{
+            width:400px;
+            height:100px;
+            background-color: rgb(194, 194, 194);
+            border:1px solid rgb(76, 76, 76);
+        }
+
+        .test1{
+            background-color: aqua;
+        }
+
+        .test2{
+            font-size: larger;
+        }
+
+        .test3{
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="root">
+<!-- 字串符寫法，樣式的類別不確定，需要動態指定 -->
+        <div class="basic" :class="mood" @click="changeMood">
+            {{name}}
+        </div>
+        <br>
+        <br>
+<!-- 數組寫法，適用於綁定個數不確定，名字不確定 -->
+        <div class="basic" :class="arr">
+            {{name}}
+        </div>
+        <br>
+        <br>
+<!-- 對象寫法，適用於綁定個數確定，名字也確定，但要動態決定用不用 -->
+        <div class="basic" :class="classObj">
+            {{name}}
+        </div>
+        <br>
+        <br>
+        <!-- 綁定style樣式，對象寫法 -->
+        <div class="basic" :style="styleObj">
+            {{name}}
+        </div>
+        <!-- 綁定style樣式， 數組寫法 -->
+        <div class="basic" :style="styleArr">
+            {{name}}
+        </div>
+
+        
+        
+    </div>
+
+</body>
+<script>
+    new Vue({
+        el:'#root',
+        data:{
+            name:'測試用文字',
+            mood:'normal',
+            arr:['test1','test2','test3'],
+            classObj:{
+                test1:true,
+                test2:true,
+
+            },
+            styleObj:{
+                fontSize:'40px'
+
+            },
+            styleObj2:{
+                fontSize:'40px'
+
+            },styleArr:[
+                {
+                    backgroundColor:'orange',
+                },
+                {
+                    fontSize:'60px',
+                    color:'red',
+                }
+                
+
+            ]
+        },
+        methods:{
+            changeMood(){
+                const arr =['happy','sad','normal'];
+                const index = Math.floor(Math.random()*3);
+                this.mood = arr[index];
+            }
+        }
+    })
+
+</script>
+
+</html>

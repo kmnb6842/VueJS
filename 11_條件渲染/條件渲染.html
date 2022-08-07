@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root">
+        <h2>當前的n值是{{n}}</h2>
+        <button @click="n++">點我n+1</button>
+        <br>
+        <!-- v-if v-else-if v-else -->
+        <div v-if="n === 1">Angular</div>
+        <div v-else-if="n === 2">React</div>
+        <div v-else-if="n === 3">Vue</div>
+        <div v-else>哈哈</div>
+
+
+        <!-- v-if與template的配合使用 -->
+        <template v-if="n===1">
+            <h2>0101</h2>
+            <h2>0202</h2>
+            <h2>0303</h2>
+        </template>
+    </div>
+
+</body>
+<script>
+    Vue.config.productionTip = false
+
+    new Vue({
+        el:'#root',
+        data:{
+            n:0,
+        },
+
+    })
+
+
+
+
+</script>
+
+</html>

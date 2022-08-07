@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src ="../js/vue.js"></script>
+</head>
+<body>
+
+    <div id = "root">
+        姓: <input type="text" v-model="firstName"><br/>
+        名: <input type="text" v-model="lastName"><br/>
+        全名:<span>{{fullName}}</span>
+    </div>
+
+
+    <script type = "text/javascript">
+       
+        const vm = new Vue({
+            el:'#root',
+            data:{
+                firstName:'Xiao',
+                lastName:'Lynn',
+            },
+            computed:{
+                fullName:{
+                    //get有什麼作用?當有人讀取fullName時，get就會被調用，且返回值為fallName的值
+                    get(){
+                        console.log('get被調用了');
+                        // console.log(this) 此處的this vue幫你寫好了，這邊是指 vm
+                        return this.firstName + '-' + this.lastName
+                    },
+                    //set什麼時候被調用，當fullName被修改時
+                    set(value){
+                        console.log('使用set',value);
+                        
+                        const arr = value.split('-');
+                        this.firstName = arr[0];
+                        this.lastName = arr[1];
+                        
+
+                    }
+                }
+            }
+        })
+    </script>
+    
+</body>
+</html>
